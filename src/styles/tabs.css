@@ -1,0 +1,24 @@
+.tab-content {
+    display: none;
+    animation: fadeIn 0.25s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.page h2 {
+    margin-bottom: 16px;
+}

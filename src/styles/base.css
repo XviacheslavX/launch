@@ -1,0 +1,44 @@
+:root {
+    --bg-main: #0b1020;
+    --bg-panel: #020617;
+    --bg-hover: #0f172a;
+
+    --border: #1e293b;
+
+    --text-main: #e5e7eb;
+    --text-muted: #94a3b8;
+
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+
+    --success: #22c55e;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: Inter, system-ui, sans-serif;
+    background: #0f172a;
+    color: #e5e7eb;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: inherit;
+}
+
+select,
+input {
+    background: #020617;
+    border: 1px solid #1e293b;
+    color: #e5e7eb;
+    padding: 8px;
+    border-radius: 6px;
+}

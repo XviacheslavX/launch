@@ -1,0 +1,30 @@
+{
+  "app.title": "Мій Minecraft лаунчер",
+  "app.subtitle": "Кастомний лаунчер для твого проєкту",
+
+  "tabs.auth": "Авторизація",
+  "tabs.servers": "Сервери",
+  "tabs.config": "Конфігурація",
+  "tabs.settings": "Налаштування",
+
+  "auth.title": "Авторизація",
+  "auth.login": "Вхід до акаунту",
+  "auth.username": "Email або логін",
+  "auth.password": "Пароль",
+  "auth.loginBtn": "Увійти",
+  "auth.logoutBtn": "Вийти",
+
+  "servers.title": "Сервери",
+  "servers.play": "Грати",
+  "servers.select": "Обрати",
+  "servers.selected": "Вибрано",
+
+  "config.title": "Конфігурація клієнта",
+  "config.memory": "Памʼять Java",
+  "config.save": "Зберегти",
+
+  "settings.title": "Налаштування",
+  "settings.java": "Java",
+  "settings.installJava8": "Встановити Java 8",
+  "settings.installJava17": "Встановити Java 17"
+}

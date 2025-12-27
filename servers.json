@@ -1,0 +1,54 @@
+{
+  "servers": [
+    {
+      "id": "hitech",
+      "name": "HiTeck",
+      "version": "1.12.2",
+      "description": "Магічний RPG сервер з класами...",
+      "features": [
+          "Магічні класи",
+          "PvE та PvP",
+          "Економіка"
+      ],
+      "type": "modded",
+      "ip": "mc.yourserver.com",
+      "port": 25565,
+
+      "client": {
+        "provider": "github-release",
+        "repo": "XviacheslavX/minecraft",
+        "tag": "minecraft",
+        "asset": "minecraft1.12.2.zip"
+      }
+    },
+
+    {
+      "id": "magik",
+      "name": "Magik",
+      "version": "1.16.5",
+      "type": "modded",
+      "ip": "mc.yourserver.com",
+      "port": 25565,
+
+      "client": {
+        "provider": "github-release",
+        "repo": "XviacheslavX/minecraft",
+        "tag": "minecraft",
+        "asset": "minecraft1.16.5.zip"
+      }
+    },
+    {
+      "id": "survival1201",
+      "name": "Survival 1.20.1",
+      "version": "1.20.1",
+      "type": "forge",
+
+      "client": {
+        "provider": "github-release",
+        "repo": "XviacheslavX/minecraft",
+        "tag": "minecraft",
+        "asset": "minecraft1.20.1.zip"
+      }
+    }    
+  ]
+}

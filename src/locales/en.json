@@ -1,0 +1,30 @@
+{
+  "app.title": "My Minecraft Launcher",
+  "app.subtitle": "Custom launcher for your project",
+
+  "tabs.auth": "Authorization",
+  "tabs.servers": "Servers",
+  "tabs.config": "Configuration",
+  "tabs.settings": "Settings",
+
+  "auth.title": "Authorization",
+  "auth.login": "Login",
+  "auth.username": "Email or username",
+  "auth.password": "Password",
+  "auth.loginBtn": "Login",
+  "auth.logoutBtn": "Logout",
+
+  "servers.title": "Servers",
+  "servers.play": "Play",
+  "servers.select": "Select",
+  "servers.selected": "Selected",
+
+  "config.title": "Client configuration",
+  "config.memory": "Java memory",
+  "config.save": "Save",
+
+  "settings.title": "Settings",
+  "settings.java": "Java",
+  "settings.installJava8": "Install Java 8",
+  "settings.installJava17": "Install Java 17"
+}

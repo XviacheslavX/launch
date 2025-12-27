@@ -1,0 +1,62 @@
+{
+  "name": "ucraft-launcher",
+  "version": "0.1.8",
+  "description": "Ucraft Minecraft Launcher",
+  "author": "Ucraft",
+  "license": "MIT",
+
+  "main": "main.js",
+
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --publish always",
+    "dist:win": "electron-builder --win --publish always"
+  },
+
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "axios": "^1.13.2",
+    "electron-updater": "^6.6.2",
+    "unzipper": "^0.12.3"
+  },
+
+  "devDependencies": {
+    "electron": "^32.3.3",
+    "electron-builder": "^26.0.12"
+  },
+
+  "build": {
+    "appId": "com.ucraft.launcher",
+    "productName": "Ucraft Launcher",
+
+    "directories": {
+      "output": "dist"
+    },
+
+    "files": [
+      "**/*",
+      "!node_modules/*/{test,__tests__}/**"
+    ],
+
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.png"
+    },
+
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+
+    "publish": [
+    {
+      "provider": "github",
+      "owner": "XviacheslavX",
+      "repo": "launcher-updates",
+      "private": false
+    }
+  ]
+  }
+}

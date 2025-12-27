@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Minecraft Launcher</title>
+
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';"
+    />
+
+    <link rel="stylesheet" href="./styles/base.css" />
+    <link rel="stylesheet" href="./styles/layout.css" />
+    <link rel="stylesheet" href="./styles/components.css" />
+    <link rel="stylesheet" href="./styles/tabs.css" />
+  </head>
+  <body>
+    <!-- =========================
+     🔒 AUTH SCREEN
+========================= -->
+    <div id="auth-screen" class="auth-screen">
+      <div class="auth-card card">
+        <h2 data-i18n="tabs.auth"></h2>
+
+        <div class="form-group">
+          <label>Email / Login</label>
+          <input id="login-username" type="text" />
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input id="login-password" type="password" />
+        </div>
+
+        <button id="login-btn">Login</button>
+      </div>
+    </div>
+
+    <!-- =========================
+     🔓 APP SHELL
+========================= -->
+    <div id="app-shell" class="app hidden">
+      <!-- SIDEBAR -->
+      <aside class="app__sidebar">
+        <div class="logo">
+          <span class="logo__icon">MC</span>
+          <span class="logo__text" data-i18n="app.title"></span>
+        </div>
+
+        <nav class="nav">
+          <button
+            class="nav__item tab-button"
+            data-tab="servers"
+            data-i18n="tabs.servers"
+          ></button>
+          <button
+            class="nav__item tab-button"
+            data-tab="settings"
+            data-i18n="tabs.settings"
+          ></button>
+        </nav>
+      </aside>
+
+      <!-- MAIN -->
+      <main class="app__main">
+        <header class="topbar">
+          <div class="topbar__left">
+            <span class="topbar__subtitle" data-i18n="app.subtitle"></span>
+          </div>
+          <div class="topbar__right">
+            <span id="auth-status" class="user-status"></span>
+            <button id="logout-btn">Вийти</button>
+          </div>
+        </header>
+
+        <section class="content">
+          <!-- SERVERS -->
+          <div class="page tab-content" id="tab-servers">
+            <div id="server-list-view">
+              <h2 data-i18n="tabs.servers"></h2>
+              <ul id="server-list" class="server-list"></ul>
+            </div>
+
+            <div id="server-details-view" style="display: none">
+              <div class="server-details-header">
+                <button id="server-back-btn">← Назад</button>
+                <h2 id="server-title"></h2>
+              </div>
+
+              <div class="card server-details-card">
+                <p id="server-description"></p>
+                <ul id="server-features"></ul>
+              </div>
+
+              <div class="card">
+                <div id="download-status"></div>
+                <progress id="download-progress" max="100"></progress>
+                <button id="play-btn">Грати</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- SETTINGS -->
+          <div class="page tab-content" id="tab-settings">
+            <h2 data-i18n="tabs.settings"></h2>
+
+            <div class="card">
+              <h3>Виділення памʼяті</h3>
+              <input type="range" id="memory-slider" min="1" step="1" />
+              <div class="memory-current">
+                Виділено: <strong id="memory-value">—</strong>
+              </div>
+            </div>
+
+            <div class="card">
+              <label>
+                <input type="checkbox" id="cfg-close-launcher" />
+                Закривати лаунчер при запуску гри
+              </label>
+            </div>
+
+            <div class="card">
+              <h3>Мова</h3>
+              <select id="language-select">
+                <option value="uk">Українська</option>
+                <option value="en">English</option>
+              </select>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- ===== LAUNCH OVERLAY (БЕЗ ЗМІН) ===== -->
+    <div id="launch-overlay" class="launch-overlay hidden">
+      <div class="launch-bg"></div>
+      <div class="launch-content">
+        <h1 id="launch-title">Minecraft</h1>
+        <div class="launch-progress">
+          <div id="launch-progress-bar"></div>
+        </div>
+        <div id="launch-percent">0%</div>
+        <div id="launch-status">Підготовка гри…</div>
+      </div>
+    </div>
+
+    <script type="module" src="renderer.js"></script>
+  </body>
+</html>

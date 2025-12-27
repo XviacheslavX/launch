@@ -1,0 +1,84 @@
+.app {
+    display: flex;
+    height: 100vh;
+}
+
+/* SIDEBAR */
+.app__sidebar {
+    width: 250px;
+    background: linear-gradient(180deg, #020617, #020617cc);
+    border-right: 1px solid var(--border);
+    padding: 20px;
+}
+
+.logo {
+    gap: 12px;
+    font-size: 18px;
+}
+
+.logo__icon {
+    background: var(--accent);
+    box-shadow: 0 0 20px #3b82f655;
+}
+
+/* NAV */
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.nav__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 14px;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+}
+
+.nav__item:hover {
+    background: var(--bg-hover);
+    color: var(--text-main);
+}
+
+.nav__item.active {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 0 12px #3b82f644;
+}
+
+/* MAIN */
+.app__main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* TOPBAR */
+.topbar {
+    backdrop-filter: blur(8px);
+    background: rgba(2, 6, 23, 0.7);
+}
+
+/* CONTENT */
+.content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+.hidden {
+    display: none !important;
+}
+
+.auth-screen {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-card {
+    width: 360px;
+}
