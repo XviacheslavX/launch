@@ -1,0 +1,16 @@
+{
+  "app.title": "Mój Launcher Minecraft",
+  "app.subtitle": "Niestandardowy launcher dla Twojego projektu",
+
+  "tabs.auth": "Logowanie",
+  "tabs.servers": "Serwery",
+  "tabs.settings": "Ustawienia",
+
+  "auth.login": "Zaloguj się",
+  "auth.username": "Email / Login",
+  "auth.password": "Hasło",
+
+  "settings.memory": "Pamięć",
+  "settings.language": "Język",
+  "settings.closeLauncher": "Zamknij launcher po uruchomieniu gry"
+}

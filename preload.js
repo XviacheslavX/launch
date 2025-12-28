@@ -27,5 +27,12 @@ contextBridge.exposeInMainWorld("api", {
     getSystemMemory: () => ipcRenderer.invoke("getSystemMemory"),
 
     onGameClosed: callback =>
-        ipcRenderer.on("game-closed", callback)
+        ipcRenderer.on("game-closed", callback),
+
+    windowControl: {
+    minimize: () => ipcRenderer.send("window:minimize"),
+    maximize: () => ipcRenderer.send("window:maximize"),
+    close: () => ipcRenderer.send("window:close")
+    }
+
 });

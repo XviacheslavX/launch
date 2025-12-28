@@ -1,12 +1,21 @@
 export async function initSettingsTab() {
-  const cfgClose = document.getElementById("cfg-close-launcher");
-
-  // Memory slider
+  /* =============================
+     ROOT CHECK
+  ============================= */
   const slider = document.getElementById("memory-slider");
   const valueLabel = document.getElementById("memory-value");
+  const cfgClose = document.getElementById("cfg-close-launcher");
+
+  if (!slider) {
+    console.warn("[SettingsTab] HTML not loaded, skipping init");
+    return;
+  }
 
   const gb = v => parseInt(v.replace("G", ""), 10);
 
+  /* =============================
+     LOAD CONFIG
+  ============================= */
   async function load() {
     const cfg = await window.api.getConfig();
     const mem = await window.api.getSystemMemory();
@@ -28,28 +37,30 @@ export async function initSettingsTab() {
     }
   }
 
-  // 🔁 MEMORY AUTOSAVE (Xms = Xmx)
-  if (slider) {
-    slider.addEventListener("input", async () => {
-      const value = parseInt(slider.value, 10);
+  /* =============================
+     MEMORY AUTOSAVE
+  ============================= */
+  slider.addEventListener("input", async () => {
+    const value = parseInt(slider.value, 10);
 
-      if (valueLabel) {
-        valueLabel.textContent = `${value} GB`;
+    if (valueLabel) {
+      valueLabel.textContent = `${value} GB`;
+    }
+
+    const cfg = await window.api.getConfig();
+
+    await window.api.saveConfig({
+      ...cfg,
+      memory: {
+        xms: `${value}G`,
+        xmx: `${value}G`
       }
-
-      const cfg = await window.api.getConfig();
-
-      await window.api.saveConfig({
-        ...cfg,
-        memory: {
-          xms: `${value}G`,
-          xmx: `${value}G`
-        }
-      });
     });
-  }
+  });
 
-  // 🔁 CHECKBOX AUTOSAVE (ВАЖЛИВО: input, не change)
+  /* =============================
+     CLOSE LAUNCHER OPTION
+  ============================= */
   if (cfgClose) {
     cfgClose.addEventListener("input", async () => {
       const cfg = await window.api.getConfig();

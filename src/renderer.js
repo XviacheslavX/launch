@@ -6,50 +6,92 @@ import { initAuthScreen } from "./ui/screens/authScreen.js";
 import { initServersTab } from "./ui/tabs/servers.js";
 import { initSettingsTab } from "./ui/tabs/settings.js";
 
-const authScreen = document.getElementById("auth-screen");
-const appShell = document.getElementById("app-shell");
-const authStatus = document.getElementById("auth-status");
-const logoutBtn = document.getElementById("logout-btn");
-
-let appInitialized = false;
+import { loadHTML } from "./ui/loader.js";
 
 /* =============================
-   UI STATE
+   UI STATE HELPERS
 ============================= */
+let appInitialized = false;
+
 function showAuthScreen() {
+  const authScreen = document.getElementById("auth-screen");
+  const appShell = document.getElementById("app-shell");
+
   authScreen.classList.remove("hidden");
   appShell.classList.add("hidden");
+
+  document.getElementById("user-block")?.classList.add("hidden");
 }
 
 async function showAppShell(user) {
+  const authScreen = document.getElementById("auth-screen");
+  const appShell = document.getElementById("app-shell");
+  const authStatus = document.getElementById("auth-status");
+
   authScreen.classList.add("hidden");
   appShell.classList.remove("hidden");
 
+  document.getElementById("user-block")?.classList.remove("hidden");
   authStatus.textContent = `✔ ${user.username}`;
 
-  // 🔒 ініціалізуємо app ТІЛЬКИ 1 раз
   if (!appInitialized) {
     initTabs();
-    await initServersTab();
-    await initSettingsTab();
     appInitialized = true;
   }
 }
 
 /* =============================
-   LOGOUT
-============================= */
-logoutBtn.addEventListener("click", async () => {
-  await window.api.logout();
-  showAuthScreen();
-});
-
-/* =============================
-   APP START
+   APP BOOTSTRAP
 ============================= */
 document.addEventListener("DOMContentLoaded", async () => {
+  const root = document.getElementById("root");
+
+  /* -------- LOAD HTML -------- */
+  await loadHTML(root, "./layout/topbar.html");
+  await loadHTML(root, "./screens/auth.html");
+  await loadHTML(root, "./screens/app.html");
+
+  await loadHTML(
+    document.getElementById("sidebar"),
+    "./layout/sidebar.html"
+  );
+
+  await loadHTML(
+    document.getElementById("tab-servers"),
+    "./tabs/servers.html"
+  );
+
+  await loadHTML(
+    document.getElementById("tab-settings"),
+    "./tabs/settings.html"
+  );
+
+  await loadHTML(root, "./layout/launchOverlay.html");
+
+
+  /* -------- WINDOW CONTROLS -------- */
+  document.getElementById("win-min")?.addEventListener("click", () => {
+    window.api.windowControl.minimize();
+  });
+
+  document.getElementById("win-max")?.addEventListener("click", () => {
+    window.api.windowControl.maximize();
+  });
+
+  document.getElementById("win-close")?.addEventListener("click", () => {
+    window.api.windowControl.close();
+  });
+
+  /* -------- LOGOUT -------- */
+  document.getElementById("logout-btn")?.addEventListener("click", async () => {
+    await window.api.logout();
+    showAuthScreen();
+  });
+
+  /* -------- I18N -------- */
   await initI18n();
 
+  /* -------- AUTH STATE -------- */
   const user = await window.api.getUser();
 
   if (user) {
@@ -58,7 +100,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     showAuthScreen();
   }
 
-  // 🔐 auth screen init (з callback)
+  /* -------- AUTH SCREEN INIT -------- */
   initAuthScreen(async user => {
     await showAppShell(user);
   });

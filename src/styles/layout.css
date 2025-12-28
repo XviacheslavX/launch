@@ -1,6 +1,18 @@
-.app {
+/* layout.css */
+body {
     display: flex;
-    height: 100vh;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.topbar {
+    flex-shrink: 0;
+}
+
+.app {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
 }
 
 /* SIDEBAR */
@@ -58,10 +70,32 @@
 
 /* TOPBAR */
 .topbar {
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     backdrop-filter: blur(8px);
     background: rgba(2, 6, 23, 0.7);
+    border-bottom: 1px solid var(--border);
+}
+/* DRAG AREA */
+.topbar__drag {
+    flex: 1;
+    padding-left: 24px;
+    font-size: 13px;
+    opacity: 0.85;
+    -webkit-app-region: drag;
 }
 
+/* RIGHT SIDE */
+.topbar__right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-right: 10px;
+    -webkit-app-region: no-drag;
+}
 /* CONTENT */
 .content {
     flex: 1;
@@ -73,7 +107,7 @@
 }
 
 .auth-screen {
-    height: 100vh;
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,4 +115,113 @@
 
 .auth-card {
     width: 360px;
+}
+
+/* ===== WINDOW BAR ===== */
+.window-bar {
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(180deg, #020617, #020617cc);
+    border-bottom: 1px solid var(--border);
+    -webkit-app-region: drag;
+}
+
+.window-drag {
+    padding-left: 12px;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.window-controls {
+    display: flex;
+    height: 100%;
+    -webkit-app-region: no-drag;
+}
+
+.window-controls button {
+    width: 46px;
+    height: 100%;
+    border-radius: 0;
+    font-size: 14px;
+}
+
+.window-controls button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#win-close:hover {
+    background: #ef4444;
+}
+/* ===== WINDOW BUTTONS IN TOPBAR ===== */
+
+.window-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.win-btns {
+    display: flex;
+    margin-left: 6px;
+}
+
+.win-btns button {
+    width: 38px;
+    height: 28px;
+    border-radius: 6px;
+}
+
+.win-btns button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#win-close:hover {
+    background: #ef4444;
+}
+/* USER */
+.user-block {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-status {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+/* ===== TOPBAR ACTIONS ===== */
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    -webkit-app-region: no-drag;
+}
+
+/* ===== LANGUAGE BUTTON ===== */
+.lang-btn {
+    height: 28px;
+    min-width: 48px;
+    padding: 0 10px;
+
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-main);
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+    -webkit-app-region: no-drag;
+}
+
+.lang-btn:hover {
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.lang-btn:active {
+    transform: translateY(0);
 }
