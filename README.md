@@ -3,3 +3,6 @@
 ```bash
 npm install
 ```
+### 2 Запуск 
+```bash
+npm start
